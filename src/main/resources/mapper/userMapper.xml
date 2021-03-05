@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="library.system.dao.UserMapper">
+    <resultMap id="userMap" type="library.system.dto.SysUser">
+        <result property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userId" column="user_id"/>
+        <result property="userPassword" column="user_password"/>
+    </resultMap>
+
+    <insert id="insertOneUser">
+        insert into sys_user
+        (user_name , user_id ,user_password)
+        values
+        (#{userName} , #{userId} , #{userPassword})
+    </insert>
+
+    <select id="selectUserByUserId" resultMap="userMap">
+        select * from sys_user where user_id = #{userId}
+    </select>
+
+</mapper>
